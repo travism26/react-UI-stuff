@@ -6,8 +6,12 @@ var GistBox = React.createClass({
 		};
 	},
 	
-	onAdd: function () {
-		var url = 'https://api.github.com/'
+	addGist: function (username) {
+		var url = `https://api.github.com/users/${username}/gists`
+
+		$.get(url, function(result) {
+			console.log(result);
+		});
 	},
 
 	render: function() {
