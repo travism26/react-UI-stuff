@@ -19,7 +19,7 @@ var GistAddForm = React.createClass({
 	render: function() {
 		return (
 			<div>
-				<form onSubmit={this.addGist} >
+				<form className="form-inline" onSubmit={this.addGist} >
 					<input value={this.state.username } onChange={this.onChange} placeholder="type a github username"/>
 					<button>Fetch Latest Gist</button>
 				</form>
