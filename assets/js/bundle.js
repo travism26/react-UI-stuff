@@ -7,9 +7,15 @@ var _GistBox = require('./components/GistBox');
 
 var _GistBox2 = _interopRequireWildcard(_GistBox);
 
+var _StopWatch = require('./components/StopWatch');
+
+var _StopWatch2 = _interopRequireWildcard(_StopWatch);
+
 React.render(React.createElement(_GistBox2['default'], null), document.querySelector('#app'));
 
-},{"./components/GistBox":4}],2:[function(require,module,exports){
+React.render(React.createElement(_StopWatch2['default'], null), document.querySelector('#stopWatch'));
+
+},{"./components/GistBox":4,"./components/StopWatch":5}],2:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -152,4 +158,77 @@ exports['default'] = GistBox;
 module.exports = exports['default'];
 //console.log(result);
 
-},{"./Gist":2,"./GistAddForm":3}]},{},[1]);
+},{"./Gist":2,"./GistAddForm":3}],5:[function(require,module,exports){
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+	value: true
+});
+var StopWatch = React.createClass({
+	displayName: "StopWatch",
+
+	getInitialState: function getInitialState() {
+		return {
+			time: 0,
+			until: 0,
+			enabled: true
+		};
+	},
+
+	type: function type(e) {
+		this.setState({ until: e.target.value });
+	},
+
+	start: function start() {
+
+		this.setState({ enabled: false });
+		this.interval = setInterval((function () {
+			if (this.isTimeUp()) {
+				this.finish();
+			} else {
+				this.tick();
+			};
+		}).bind(this), 1000);
+	},
+
+	finish: function finish() {
+		// alert("WHAAAA");
+
+		this.replaceState(this.getInitialState());
+		console.log("Ding Ding Ding");
+		React.findDOMNode(this.refs.input).focus();
+		return clearInterval(this.interval);
+	},
+
+	tick: function tick() {
+		this.setState({ time: this.state.time + 1 });
+	},
+
+	isTimeUp: function isTimeUp() {
+		// var lim = parseInt(this.limit);
+		return this.state.time >= this.state.until;
+	},
+
+	render: function render() {
+		return React.createElement(
+			"div",
+			{ className: "StopWatch" },
+			React.createElement("input", { ref: "input", onChange: this.type, value: this.state.until }),
+			React.createElement(
+				"button",
+				{ disabled: !this.state.enabled, onClick: this.start },
+				"Go"
+			),
+			React.createElement(
+				"h1",
+				null,
+				this.state.time
+			)
+		);
+	}
+});
+
+exports["default"] = StopWatch;
+module.exports = exports["default"];
+
+},{}]},{},[1]);
