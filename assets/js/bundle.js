@@ -11,11 +11,17 @@ var _StopWatch = require('./components/StopWatch');
 
 var _StopWatch2 = _interopRequireWildcard(_StopWatch);
 
+var _NavBar = require('./layouts/NavigationBar');
+
+var _NavBar2 = _interopRequireWildcard(_NavBar);
+
 React.render(React.createElement(_GistBox2['default'], null), document.querySelector('#app'));
 
 React.render(React.createElement(_StopWatch2['default'], null), document.querySelector('#stopWatch'));
 
-},{"./components/GistBox":4,"./components/StopWatch":5}],2:[function(require,module,exports){
+React.render(React.createElement(_NavBar2['default'], null), document.querySelector('#Navigation'));
+
+},{"./components/GistBox":4,"./components/StopWatch":5,"./layouts/NavigationBar":6}],2:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -229,6 +235,96 @@ var StopWatch = React.createClass({
 });
 
 exports["default"] = StopWatch;
+module.exports = exports["default"];
+
+},{}],6:[function(require,module,exports){
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+	value: true
+});
+var NavBar = React.createClass({
+	displayName: "NavBar",
+
+	render: function render() {
+		return React.createElement(
+			"nav",
+			{ className: "navbar navbar-default navbar-fixed-top" },
+			React.createElement(
+				"div",
+				{ className: "container-fluid" },
+				React.createElement(
+					"div",
+					{ className: "navbar-header" },
+					React.createElement(
+						"button",
+						{ type: "button", className: "navbar-toggle collapsed", "data-toggle": "collapse",
+							"data-target": "#bs-example-navbar-collapse-1" },
+						React.createElement(
+							"span",
+							{ className: "sr-only" },
+							"Toggle Navigation"
+						),
+						React.createElement("span", { className: "icon-bar" }),
+						React.createElement("span", { className: "icon-bar" }),
+						React.createElement("span", { className: "icon-bar" })
+					),
+					React.createElement(
+						"a",
+						{ className: "navbar-brand", href: "#" },
+						"ReactJS Stuff"
+					)
+				),
+				React.createElement(
+					"div",
+					{ className: "collapse navbar-collapse", id: "bs-example-navbar-collapse-1" },
+					React.createElement(
+						"ul",
+						{ className: "nav navbar-nav" },
+						React.createElement(
+							"li",
+							null,
+							React.createElement(
+								"a",
+								{ href: "#" },
+								"Home"
+							)
+						)
+					),
+					React.createElement(
+						"ul",
+						{ className: "nav navbar-nav navbar-right" },
+						React.createElement(
+							"li",
+							{ className: "dropdown" },
+							React.createElement(
+								"a",
+								{ href: "#", className: "dropdown-toggle", "data-toggle": "dropdown", role: "button", "aria-expanded": "false" },
+								"Travis",
+								React.createElement("span", { className: "caret" })
+							),
+							React.createElement(
+								"ul",
+								{ className: "dropdown-menu", role: "menu" },
+								React.createElement(
+									"li",
+									null,
+									React.createElement(
+										"a",
+										{ href: "#" },
+										"Logout"
+									)
+								)
+							)
+						)
+					)
+				)
+			)
+		);
+	}
+});
+
+exports["default"] = NavBar;
 module.exports = exports["default"];
 
 },{}]},{},[1]);
