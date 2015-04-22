@@ -32,29 +32,44 @@
 			</ul>
 			<script type="text/jsx">
 				var UserMessage = React.createClass({
+					getInitialState: function() {
+						return {
+							username: '',
+							message: ''
+						};
+					},
+					addMessage: function(e) {
+						//alert(e.target.username.value + " " + e.target.message.value);
+						this.setState({
+							username: e.target.username.value,
+							message: e.target.message.value
+						});
+					},
+					onUsernameChange: function(e) {
+						this.setState({ username: e.target.value});
+					},
+					onMessageChange: function(e) {
+						this.setState({ message: e.target.value })
+					},
 					render: function() {
 						return (
 							<div className="col-md-6">
 								<form onSubmit={this.addMessage}>
-									<div class="form-group">
-										<label for="username">Username: </label>
-										<input class="form-control" type="text" name="username" placeholder="username" />
+									<div className="form-group">
+										<label htmlFor="username">Username: </label>
+										<input value={this.state.username} onChange={this.onUsernameChange} className="form-control" type="text" name="username" placeholder="username" />
 									</div>
-									<div class="form-group">
-										<label for="message">Message: </label>
-										<input class="form-control" type="text" name="message" placeholder="message" />
+									<div className="form-group">
+										<label htmlFor="message">Message: </label>
+										<input value={this.state.message} onChange={this.onMessageChange} className="form-control" type="text" name="message" placeholder="message" />
 									</div>
-									<div class="form-group">
+									<div className="form-group">
 										<input type="submit" value="Submit" />
 									</div>
 								</form>
 							</div>
 						);
 					},
-
-					addMessage: function() {
-
-					}
 				});
 				React.render(<UserMessage />, document.querySelector('#userForm'));
 			</script>
