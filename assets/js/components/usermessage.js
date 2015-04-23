@@ -17,14 +17,12 @@ var UserMessage = React.createClass({
 		
 	},
 	render: function() {
-
 		var displayPost = function (status){
 			return <Post username={status.username} message={status.message} />
 		};
-
 		return (
 			//alert(this.state.statusPost.length);
-			<div>
+			<div className="row">
 				<h1>Hello guys</h1>
 				<PostForm addMessage={this.addMessage} />
 

@@ -182,28 +182,24 @@ var Post = React.createClass({
 	render: function render() {
 		return React.createElement(
 			"div",
-			{ className: "col-md-4" },
+			{ className: "media" },
 			React.createElement(
 				"div",
-				{ className: "media" },
+				{ className: "pull-left" },
+				React.createElement("img", { src: "http://bit.ly/1NABbkf" })
+			),
+			React.createElement(
+				"div",
+				{ className: "media-body" },
 				React.createElement(
-					"div",
-					{ className: "pull-left" },
-					React.createElement("img", { src: "http://bit.ly/1NABbkf" })
+					"h1",
+					{ className: "media-heading" },
+					this.props.username
 				),
 				React.createElement(
-					"div",
-					{ className: "media-body" },
-					React.createElement(
-						"h1",
-						{ className: "media-heading" },
-						this.props.username
-					),
-					React.createElement(
-						"p",
-						{ className: "text-muted" },
-						this.props.message
-					)
+					"p",
+					{ className: "text-muted" },
+					this.props.message
 				)
 			)
 		);
@@ -388,16 +384,14 @@ var UserMessage = React.createClass({
 		this.setState({ statusPost: statusPost });
 	},
 	render: function render() {
-
 		var displayPost = function displayPost(status) {
 			return React.createElement(_Post2['default'], { username: status.username, message: status.message });
 		};
-
 		return (
 			//alert(this.state.statusPost.length);
 			React.createElement(
 				'div',
-				null,
+				{ className: 'row' },
 				React.createElement(
 					'h1',
 					null,
