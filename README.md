@@ -13,4 +13,4 @@ start up the server two options below:
 `php -S localhost:8000`
 
 URI
-http://localhost:8000/gistbox.html
+http://localhost:8000
