@@ -23,10 +23,10 @@ var UserMessage = React.createClass({
 		return (
 			//alert(this.state.statusPost.length);
 			<div className="row">
-				<h1>Hello guys</h1>
-				<PostForm addMessage={this.addMessage} />
-
-				{ this.state.statusPost.map(displayPost) }
+				<div className="col-md-6">
+					<PostForm addMessage={this.addMessage} />
+					{ this.state.statusPost.map(displayPost) }
+				</div>
 			</div>
 		);
 	}

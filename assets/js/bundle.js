@@ -182,7 +182,7 @@ var Post = React.createClass({
 	render: function render() {
 		return React.createElement(
 			"div",
-			{ className: "media" },
+			{ className: "media _post-custom" },
 			React.createElement(
 				"div",
 				{ className: "pull-left" },
@@ -239,36 +239,32 @@ var PostForm = React.createClass({
 	},
 	render: function render() {
 		return React.createElement(
-			'div',
-			{ className: 'col-md-6' },
+			'form',
+			{ onSubmit: this.addMessage },
 			React.createElement(
-				'form',
-				{ onSubmit: this.addMessage },
+				'div',
+				{ className: 'form-group' },
 				React.createElement(
-					'div',
-					{ className: 'form-group' },
-					React.createElement(
-						'label',
-						{ htmlFor: 'username' },
-						'Username: '
-					),
-					React.createElement('input', { value: this.state.username, onChange: this.onUsernameChange, className: 'form-control', type: 'text', name: 'username', placeholder: 'username' })
+					'label',
+					{ htmlFor: 'username' },
+					'Username: '
 				),
+				React.createElement('input', { value: this.state.username, onChange: this.onUsernameChange, className: 'form-control', type: 'text', name: 'username', placeholder: 'username' })
+			),
+			React.createElement(
+				'div',
+				{ className: 'form-group' },
 				React.createElement(
-					'div',
-					{ className: 'form-group' },
-					React.createElement(
-						'label',
-						{ htmlFor: 'message' },
-						'Message: '
-					),
-					React.createElement('input', { value: this.state.message, onChange: this.onMessageChange, className: 'form-control', type: 'text', name: 'message', placeholder: 'message' })
+					'label',
+					{ htmlFor: 'message' },
+					'Message: '
 				),
-				React.createElement(
-					'div',
-					{ className: 'form-group' },
-					React.createElement('input', { type: 'submit', value: 'Submit' })
-				)
+				React.createElement('input', { value: this.state.message, onChange: this.onMessageChange, className: 'form-control', type: 'text', name: 'message', placeholder: 'message' })
+			),
+			React.createElement(
+				'div',
+				{ className: 'form-group' },
+				React.createElement('input', { type: 'submit', value: 'Submit' })
 			)
 		);
 	}
@@ -393,12 +389,11 @@ var UserMessage = React.createClass({
 				'div',
 				{ className: 'row' },
 				React.createElement(
-					'h1',
-					null,
-					'Hello guys'
-				),
-				React.createElement(_PostForm2['default'], { addMessage: this.addMessage }),
-				this.state.statusPost.map(displayPost)
+					'div',
+					{ className: 'col-md-6' },
+					React.createElement(_PostForm2['default'], { addMessage: this.addMessage }),
+					this.state.statusPost.map(displayPost)
+				)
 			)
 		);
 	}

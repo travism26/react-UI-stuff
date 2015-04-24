@@ -1,1 +1,13 @@
-body { padding-top: 70px; }
+body { 
+	padding-top: 70px;
+	background-color: #FFFFEB;
+}
+
+._items-list {
+	background-color: white;
+}
+
+._post-custom {
+	background-color: lightblue;
+	box-shadow: 10px 10px 5px 0px #888888;
+}

@@ -20,7 +20,6 @@ var PostForm = React.createClass({
 	},
 	render: function() {
 		return (
-			<div className="col-md-6">
 				<form onSubmit={this.addMessage}>
 					<div className="form-group">
 						<label htmlFor="username">Username: </label>
@@ -34,7 +33,6 @@ var PostForm = React.createClass({
 						<input type="submit" value="Submit" />
 					</div>
 				</form>
-			</div>
 		);
 	}
 });
