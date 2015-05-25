@@ -36,6 +36,46 @@
 				</ul>
 				<div id="userForm">	
 				</div>
+
+				<div id="content"></div>
+				<script type="text/jsx">
+
+				var CommentList = React.createClass({
+					render: function() {
+						return (
+							<div className="commentList">
+							This is the comment list!
+							</div>
+						);
+					}
+				});
+
+				var CommentForm = React.createClass({
+					render: function() {
+						return (
+							<div className="commentForm">
+							hello i am the userForm
+							</div>
+						);
+					}
+				});
+
+				
+				var CommentBox = React.createClass({
+				
+					render: function() {
+						return (
+							<div className="commentBox">
+								<h1>Comments</h1>
+								<CommentList />
+								<CommentForm />
+							</div>
+						);
+					}
+					
+				});
+				React.render(<CommentBox />, document.getElementById('content'));
+				</script>
 				<footer class="footer">
 					<br>
 				</footer>
