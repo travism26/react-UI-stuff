@@ -14,6 +14,7 @@
 		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
 		<script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
     	<script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    	<script src="https://cdnjs.cloudflare.com/ajax/libs/marked/0.3.2/marked.min.js"></script>
 		<link rel="stylesheet" type="text/css" href="/assets/css/app.css">
 	</head>
 	<body>
@@ -42,10 +43,16 @@
 
 				var CommentList = React.createClass({
 					render: function() {
+						var commentNodes = this.props.data.map(function (comment) {
+							return (
+								<Comment author={comment.author}>
+									{comment.text}
+								</Comment>
+							);
+						});
 						return (
 							<div className="commentList">
-								<Comment author="Travis Martin">this is one comment</Comment>
-								<Comment author="Pete Hunt">this is another comment</Comment>
+								{commentNodes}
 							</div>
 						);
 					}
@@ -60,6 +67,11 @@
 						);
 					}
 				});
+
+				var data = [
+				  {author: "Pete Hunt", text: "This is one comment"},
+				  {author: "Jordan Walke", text: "This is *another* comment"}
+				];
 
 				var Comment = React.createClass({
 
@@ -82,14 +94,15 @@
 						return (
 							<div className="commentBox">
 								<h1>Comments</h1>
-								<CommentList />
+								<CommentList data={this.props.data} />
 								<CommentForm />
 							</div>
 						);
 					}
 					
 				});
-				React.render(<CommentBox />, document.getElementById('content'));
+				//React.render(<CommentBox data={data} />, document.getElementById('content'));
+				React.render(<CommentBox url="comments.json" />, document.getElementById('content'));
 				</script>
 				<footer class="footer">
 					<br>
